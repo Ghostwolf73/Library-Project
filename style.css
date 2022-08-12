@@ -1,4 +1,95 @@
-*{
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
+* {
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  /* background-image: url(./images/image.jpg);
+  background-position: bottom;
+  background-size: cover; */
 }
+
+.hide {
+  display: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  font-family: 'Work Sans', sans-serif;
+}
+
+h1 span {
+  color: #48abe0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  /* border: 1px solid #dddddd; */
+  text-align: center;
+  padding: 8px;
+}
+
+
+#main-page {
+  margin-right: 80px;
+  margin-left: 80px;
+  
+}
+
+#addBook {
+  border-radius: 70%;
+  background-color: #48abe0;
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 31px;
+  height: 65px;
+  width: 65px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+
+#popup {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: #48abe0;
+  border-radius: 10px;
+}
+
+#popup input{
+  width: 80%;
+  padding: 15px;
+  margin-top: 25px;
+  border: 1px solid;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  background: #48abe0;
+
+}
+
+.status-box{
+  margin-top: 25px;
+}
+
+
