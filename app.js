@@ -17,13 +17,31 @@ function addBookToTable() {
           <td>${book.title}</td>
           <td>${book.author}</td>
           <td>${book.pages}</td>
-          <td><button class="status-button">${book.status}</button></td>
-          <td><button class="delete">delete</button></td>
+          <td><button class="status-button" onclick="changeStatus('${book.id}')">${book.status}</button></td>
+          <td><button class="delete" onclick="deleteBook('${book.id}')">delete</button></td>
         </tr>
         `;
       $tableBody.insertAdjacentHTML("afterbegin", htmlBook);
     });
   }
+
+ function changeStatus(id){
+    let book = books.filter(book => book.id === id)[0];
+
+    if(book.status === "read"){
+        book.status = "not read";
+    }
+    else if (book.status === "not read"){
+        book.status = "read";
+    }
+    addBookToTable();
+ }
+
+ function deleteBook(id){
+    let book = books.filter(book => book.id === id)[0];
+    books.splice(book, 1);
+    addBookToTable(book);
+ }
 
 const addBook = (event) => {
     event.preventDefault();
@@ -32,13 +50,18 @@ const addBook = (event) => {
         author: $("#author").val(),
         pages: $("#pages").val(),
         status: $("#status").val(),
+        id: Math.random().toString(16).slice(2)
     };
     const cb = document.querySelector("#status");
+    const myBtn = document.querySelector(".status-button");
 
     if (cb.checked === true) {
         book.status = "read";
+       
     } else {
         book.status = "not read";
+       
+
     }
 
     books.push(book);
@@ -47,28 +70,10 @@ const addBook = (event) => {
     // Update DOM
     addBookToTable(book);
 
-    const deleteBtn = document.querySelector(".delete");
-    deleteBtn.addEventListener("click", function deleteBook(){
-        books.splice(books.indexOf(book), 1);
-        addBookToTable(book);
-    })
-
-    const myBtn = document.querySelector(".status-button");
-    myBtn.addEventListener('click', function changeStatus(){
-        if (book.status === "read"){
-            myBtn.innerHTML="not read"
-            book.status = "not read"
-        } 
-        else if(book.status === "not read"){
-            myBtn.innerHTML = "read";
-            book.status = "read"
-        }
-    }
-    );
-
-
     localStorage.setItem("myMangaList", JSON.stringify(books));
 };
+
+
 
 function popForm() {
     $("#popup").removeClass("hide");
